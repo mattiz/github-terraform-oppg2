@@ -1,3 +1,14 @@
+## Setup Github
+
+Create the following Github Actions secrets:
+
+```shell
+AZURE_CLIENT_ID = Azure Portal --> Microsoft Entra ID --> App registrations --> Your app --> Overview --> Application (client) ID
+AZURE_CLIENT_SECRET = Secret from the app creation
+AZURE_SUBSCRIPTION_ID = Azure portal --> Subscriptions
+AZURE_TENANT_ID = Azure Portal --> Microsoft Entra ID --> App registrations --> Your app --> Overview --> Directory (tenant) ID
+```
+
 ## Initialize backend
 
 ```shell
