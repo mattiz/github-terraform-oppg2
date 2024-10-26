@@ -1,0 +1,8 @@
+# Common
+subscription_id = "my-subscription-id"
+
+# Storage account
+rg_backend_name     = "rg-my-backend-name"
+rg_backend_location = "westeurope"
+sa_backend_name     = "saname"
+sc_backend_name     = "tfstate"

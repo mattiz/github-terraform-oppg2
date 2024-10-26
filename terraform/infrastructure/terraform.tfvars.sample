@@ -1,0 +1,14 @@
+# Subscription
+subscription_id = "my-subscription-id"
+basename        = "mybasename"
+
+company      = "MyCompany"
+project      = "P100"
+billing_code = "10001"
+
+rgname      = "rg-my-name"
+rg_location = "westeurope"
+
+# Databased
+database_user = "myuser"
+database_pass = "mypass"
