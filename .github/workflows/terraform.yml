@@ -1,0 +1,41 @@
+name: 'Terraform'
+
+on:
+  push:
+    paths:
+      - 'terraform/test'
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  terraform:
+    name: 'Terraform'
+    runs-on: ubuntu-latest
+    #environment: production
+    env:
+      WORKING_DIR: ./terraform/test
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Setup Terraform
+      uses: hashicorp/setup-terraform@v1
+
+    - name: Terraform Init
+      run: terraform init
+      working-directory: ${{env.WORKING_DIR}}
+
+    - name: Terraform Format
+      run: terraform fmt -check
+      working-directory: ${{env.WORKING_DIR}}
+
+    - name: Terraform Plan
+      run: terraform plan -input=false
+      working-directory: ${{env.WORKING_DIR}}
+
+    - name: Terraform Apply
+      run: terraform apply -auto-approve -input=false
