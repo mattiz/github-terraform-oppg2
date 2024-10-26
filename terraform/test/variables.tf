@@ -1,8 +1,3 @@
-variable "subscription_id" {
-  type        = string
-  description = "The subscription ID"
-}
-
 variable "rg_name" {
   type        = string
   description = "Name of the resource group"
