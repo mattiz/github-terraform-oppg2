@@ -16,7 +16,7 @@ jobs:
       ARM_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
       ARM_SUBSCRIPTON_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
       ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
-      WORKING_DIR: ./terraform/test
+      WORKING_DIR: ./terraform/webapp
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     steps:
