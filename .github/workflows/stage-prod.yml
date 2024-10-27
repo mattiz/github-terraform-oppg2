@@ -32,7 +32,7 @@ jobs:
       working-directory: ${{env.WORKING_DIR}}
     
     - name: Terraform workspace stage
-      run: terraform workspace select stage || terraform workspace new stage
+      run: terraform workspace select -or-create stage
       working-directory: ${{env.WORKING_DIR}}
 
     # - name: Terraform Plan
@@ -63,7 +63,7 @@ jobs:
       working-directory: ${{env.WORKING_DIR}}
     
     - name: Terraform workspace stage
-      run: terraform workspace select prod || terraform workspace new prod
+      run: terraform workspace select -or-create prod
       working-directory: ${{env.WORKING_DIR}}
 
     # - name: Terraform Plan
