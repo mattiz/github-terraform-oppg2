@@ -2,25 +2,46 @@
 
 ### Branches
 
-Create the following branches with branch protection:
+Make sure the following branches is created
 
 - main
 - develop
+
+### Rule set
+
+Create a Rule set for your branches. Use the following settings:
+
+- Enforcement statis = Active
+- Target branches:
+  - main
+  - develop
+- Rules
+  - Restrict deletions
+  - Require a pull request before merging
+  - Require status checks to pass
+    - Status checks that are required
+      - validate (Github Actions)
+  - Block force pushes
 
 ### Secrets
 
 Create the following Github Actions secrets:
 
-```shell
-AZURE_CLIENT_ID = Azure Portal --> Microsoft Entra ID --> App registrations --> Your app --> Overview --> Application (client) ID
-AZURE_CLIENT_SECRET = Secret from the app creation
-AZURE_SUBSCRIPTION_ID = Azure portal --> Subscriptions
-AZURE_TENANT_ID = Azure Portal --> Microsoft Entra ID --> App registrations --> Your app --> Overview --> Directory (tenant) ID
-```
+| Name                      | Value                                                                                                              |
+|---------------------------|--------------------------------------------------------------------------------------------------------------------|
+| **AZURE_CLIENT_ID**       | Azure Portal --> Microsoft Entra ID --> App registrations<br>--> Your app --> Overview --> Application (client) ID |
+| **AZURE_CLIENT_SECRET**   | Secret from the app creation                                                                                       |
+| **AZURE_SUBSCRIPTION_ID** | Azure portal --> Subscriptions                                                                                     |
+| **AZURE_TENANT_ID**       | Azure Portal --> Microsoft Entra ID --> App registrations<br>--> Your app --> Overview --> Directory (tenant) ID   |
 
 ### Environment
 
-Create environment "production". Select "Required reviewers" and add the user account that is allowed to review the deployment.
+Create the following environments:
+
+- Production
+  - Select "Required reviewers" and add the user account that is allowed to review the deployment.
+- Staging
+- Development
 
 ## Initialize backend
 
