@@ -1,5 +1,14 @@
 ## Setup Github
 
+### Branches
+
+Create the following branches with branch protection:
+
+- main
+- develop
+
+### Secrets
+
 Create the following Github Actions secrets:
 
 ```shell
@@ -8,6 +17,10 @@ AZURE_CLIENT_SECRET = Secret from the app creation
 AZURE_SUBSCRIPTION_ID = Azure portal --> Subscriptions
 AZURE_TENANT_ID = Azure Portal --> Microsoft Entra ID --> App registrations --> Your app --> Overview --> Directory (tenant) ID
 ```
+
+### Environment
+
+Create environment "production". Select "Required reviewers" and add the user account that is allowed to review the deployment.
 
 ## Initialize backend
 
