@@ -35,11 +35,11 @@ jobs:
       run: terraform workspace select stage || terraform workspace new stage
       working-directory: ${{env.WORKING_DIR}}
 
-    - name: Terraform Plan
-      run: terraform plan
-      working-directory: ${{env.WORKING_DIR}}
-      env:
-        TF_VAR_subscription_id: "${{env.ARM_SUBSCRIPTON_ID}}"
+    # - name: Terraform Plan
+    #   run: terraform plan
+    #   working-directory: ${{env.WORKING_DIR}}
+    #   env:
+    #     TF_VAR_subscription_id: "${{env.ARM_SUBSCRIPTON_ID}}"
 
     #- name: Terraform Apply
     #  run: terraform apply -auto-approve -input=false
@@ -66,11 +66,11 @@ jobs:
       run: terraform workspace select prod || terraform workspace new prod
       working-directory: ${{env.WORKING_DIR}}
 
-    - name: Terraform Plan
-      run: terraform plan
-      working-directory: ${{env.WORKING_DIR}}
-      env:
-        TF_VAR_subscription_id: "${{env.ARM_SUBSCRIPTON_ID}}"
+    # - name: Terraform Plan
+    #   run: terraform plan
+    #   working-directory: ${{env.WORKING_DIR}}
+    #   env:
+    #     TF_VAR_subscription_id: "${{env.ARM_SUBSCRIPTON_ID}}"
 
     #- name: Terraform Apply
     #  run: terraform apply -auto-approve -input=false
