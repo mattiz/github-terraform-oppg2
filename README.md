@@ -9,18 +9,28 @@ Make sure the following branches is created
 
 ### Rule set
 
-Create a Rule set for your branches. Use the following settings:
+Create the followin Rule sets:
 
-- Enforcement statis = Active
+main:
+
+- Enforcement status = Active
 - Target branches:
   - main
-  - develop
 - Rules
   - Restrict deletions
   - Require a pull request before merging
   - Require status checks to pass
     - Status checks that are required
       - validate (Github Actions)
+  - Block force pushes
+
+develop:
+
+- Enforcement status = Active
+- Target branches:
+  - develop
+- Rules
+  - Restrict deletions
   - Block force pushes
 
 ### Secrets
