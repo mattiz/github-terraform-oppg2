@@ -7,8 +7,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  terraform:
-    name: 'Terraform'
+  validate:
     runs-on: ubuntu-latest
     
     env:
