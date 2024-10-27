@@ -1,9 +1,7 @@
 name: 'Validate'
 
 on:
-  push:
-    paths:
-      - 'terraform/test/**'
+  push: # Should run on update to all files since it will block the PR
   workflow_dispatch:
 
 jobs:
