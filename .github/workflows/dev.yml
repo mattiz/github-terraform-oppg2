@@ -19,6 +19,7 @@ jobs:
   stage:
     name: 'Develop'
     runs-on: ubuntu-latest
+    environment: development
 
     steps:
     - name: Checkout

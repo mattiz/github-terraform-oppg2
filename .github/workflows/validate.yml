@@ -2,6 +2,9 @@ name: 'Validate'
 
 on:
   push: # Should run on update to all files since it will block the PR
+    branches-ignore: # Main and develop have already been validates in the PR
+      - main
+      - develop
   workflow_dispatch:
 
 jobs:

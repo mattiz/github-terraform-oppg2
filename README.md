@@ -36,7 +36,12 @@ Create the following Github Actions secrets:
 
 ### Environment
 
-Create environment "production". Select "Required reviewers" and add the user account that is allowed to review the deployment.
+Create the following environments:
+
+- Production
+  - Select "Required reviewers" and add the user account that is allowed to review the deployment.
+- Staging
+- Development
 
 ## Initialize backend
 
