@@ -17,6 +17,6 @@ variable "common_tags" {
 }
 
 variable "basename" {
-  type = string
+  type        = string
   description = "The basename of the resources"
 }

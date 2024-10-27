@@ -12,7 +12,7 @@ resource "azurerm_network_security_group" "nsg" {
     protocol                   = "Tcp"
     source_port_range          = "*"
     destination_port_range     = "22"
-    source_address_prefix      = "*"
+    source_address_prefix      = "81.166.22.83"
     destination_address_prefix = "*"
   }
 
@@ -24,7 +24,7 @@ resource "azurerm_network_security_group" "nsg" {
     protocol                   = "Icmp"
     source_port_range          = "*"
     destination_port_range     = "*"
-    source_address_prefix      = "*"
+    source_address_prefix      = "81.166.22.83"
     destination_address_prefix = "*"
   }
 }
