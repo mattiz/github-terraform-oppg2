@@ -29,18 +29,18 @@ jobs:
       uses: hashicorp/setup-terraform@v3
 
     - name: Terraform Init
-      run: terraform init
+      run: terraform init -backend-config=backend.conf
       working-directory: ${{env.WORKING_DIR}}
     
     - name: Terraform workspace stage
       run: terraform workspace select -or-create stage
       working-directory: ${{env.WORKING_DIR}}
 
-    # - name: Terraform Plan
-    #   run: terraform plan
-    #   working-directory: ${{env.WORKING_DIR}}
-    #   env:
-    #     TF_VAR_subscription_id: "${{env.ARM_SUBSCRIPTON_ID}}"
+    - name: Terraform Plan
+      run: terraform plan
+      working-directory: ${{env.WORKING_DIR}}
+      env:
+        TF_VAR_subscription_id: "${{env.ARM_SUBSCRIPTON_ID}}"
 
     #- name: Terraform Apply
     #  run: terraform apply -auto-approve -input=false
@@ -59,18 +59,18 @@ jobs:
       uses: hashicorp/setup-terraform@v3
 
     - name: Terraform Init
-      run: terraform init
+      run: terraform init -backend-config=backend.conf
       working-directory: ${{env.WORKING_DIR}}
     
     - name: Terraform workspace prod
       run: terraform workspace select -or-create prod
       working-directory: ${{env.WORKING_DIR}}
 
-    # - name: Terraform Plan
-    #   run: terraform plan
-    #   working-directory: ${{env.WORKING_DIR}}
-    #   env:
-    #     TF_VAR_subscription_id: "${{env.ARM_SUBSCRIPTON_ID}}"
+    - name: Terraform Plan
+      run: terraform plan
+      working-directory: ${{env.WORKING_DIR}}
+      env:
+        TF_VAR_subscription_id: "${{env.ARM_SUBSCRIPTON_ID}}"
 
     #- name: Terraform Apply
     #  run: terraform apply -auto-approve -input=false

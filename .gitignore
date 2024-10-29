@@ -36,8 +36,5 @@ override.tf.json
 .terraformrc
 terraform.rc
 
-# Ignore backend configuration
-backend.conf
-
 # Ignore terraform lock files
 .terraform.lock.hcl
