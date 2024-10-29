@@ -1,13 +1,11 @@
 variable "rgname" {
   type        = string
   description = "The name of the resource group"
-  default     = ""
 }
 
 variable "location" {
   type        = string
   description = "The location/region of the resources group"
-  default     = "westeurope"
 }
 
 variable "common_tags" {
@@ -21,14 +19,12 @@ variable "basename" {
   description = "The basename of the resources"
 }
 
-variable "os_type" {
+variable "adminuser" {
   type        = string
-  description = "The OS type of the Service Plan"
-  default     = "Linux"
+  description = "The user name for the database"
 }
 
-variable "sku_name" {
+variable "adminpass" {
   type        = string
-  description = "The SKU name of the Service Plan"
-  default     = "P1v2"
+  description = "The password for the database"
 }

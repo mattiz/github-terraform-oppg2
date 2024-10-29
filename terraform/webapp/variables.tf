@@ -9,44 +9,37 @@ variable "subscription_id" {
 variable "basename" {
   type        = string
   description = "The base name of the resources"
-  default     = "res"
+  default     = "oppg2"
 }
 
 #
 # Resource group
 #
-variable "rgname" {
-  type        = string
-  description = "The name of the resource group"
-}
-
-variable "rg_location" {
+variable "location" {
   type        = string
   description = "The location of the resource group"
+  default     = "westeurope"
 }
 
 #
 # Tags
 #
-variable "environment" {
-  type        = string
-  description = "The environment containing the resources"
-  default     = "development"
-}
-
 variable "company" {
   type        = string
-  description = "Company name"
+  description = "The name of the company"
+  default     = "OperaTerra"
 }
 
 variable "project" {
   type        = string
-  description = "Project name"
+  description = "The project number"
+  default     = "P100"
 }
 
 variable "billing_code" {
   type        = string
-  description = "Billing code"
+  description = "The billing code"
+  default     = "10001"
 }
 
 #

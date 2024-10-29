@@ -1,13 +1,11 @@
 variable "rgname" {
   type        = string
   description = "The name of the resource group"
-  default     = "rg-tf-oppg1"
 }
 
 variable "location" {
   type        = string
   description = "The location/region of the resources group"
-  default     = "westeurope"
 }
 
 variable "common_tags" {
@@ -21,25 +19,12 @@ variable "basename" {
   description = "The basename of the resources"
 }
 
-variable "mssqlname" {
+variable "os_type" {
   type        = string
-  description = "The name of the SQL server"
-  default     = "mssql001"
+  description = "The OS type of the Service Plan"
 }
 
-variable "mssqldbname" {
+variable "sku_name" {
   type        = string
-  description = "The name of the SQL database"
-  default     = "mssqldb001"
-}
-
-
-variable "adminuser" {
-  type        = string
-  description = "The user name for the database"
-}
-
-variable "adminpass" {
-  type        = string
-  description = "The password for the database"
+  description = "The SKU name of the Service Plan"
 }
