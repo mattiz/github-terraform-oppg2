@@ -42,9 +42,9 @@ jobs:
       run: terraform plan
       working-directory: ${{env.WORKING_DIR}}
       env:
-        TF_VAR_subscription_id: "${{env.ARM_SUBSCRIPTON_ID}}"
-        TF_VAR_database_user: "${{env.ARM_SUBSCRIPTON_ID}}"
-        TF_VAR_database_pass: "${{env.ARM_SUBSCRIPTON_ID}}"
+        TF_VAR_subscription_id: "${{env.ARM_SUBSCRIPTION_ID}}"
+        TF_VAR_database_user: "${{env.DATABASE_USER}}"
+        TF_VAR_database_pass: "${{env.DATABASE_PASS}}"
 
     #- name: Terraform Apply
     #  run: terraform apply -auto-approve -input=false
@@ -74,9 +74,9 @@ jobs:
       run: terraform plan
       working-directory: ${{env.WORKING_DIR}}
       env:
-        TF_VAR_subscription_id: "${{env.ARM_SUBSCRIPTON_ID}}"
-        TF_VAR_database_user: "${{env.ARM_SUBSCRIPTON_ID}}"
-        TF_VAR_database_pass: "${{env.ARM_SUBSCRIPTON_ID}}"
+        TF_VAR_subscription_id: "${{env.ARM_SUBSCRIPTION_ID}}"
+        TF_VAR_database_user: "${{env.DATABASE_USER}}"
+        TF_VAR_database_pass: "${{env.DATABASE_PASS}}"
 
     #- name: Terraform Apply
     #  run: terraform apply -auto-approve -input=false
