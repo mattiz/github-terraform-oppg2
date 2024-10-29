@@ -45,6 +45,7 @@ jobs:
 
     - name: Terraform Apply
       run: terraform apply -auto-approve -input=false
+      working-directory: ${{env.WORKING_DIR}}
 
   prod:
     name: 'Prod'
