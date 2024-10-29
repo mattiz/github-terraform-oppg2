@@ -31,8 +31,6 @@ jobs:
     - name: Terraform Init
       run: terraform init -backend-config=backend.conf
       working-directory: ${{env.WORKING_DIR}}
-      env:
-        TF_VAR_subscription_id: "${{env.ARM_SUBSCRIPTON_ID}}"
     
     - name: Terraform workspace dev
       run: terraform workspace select -or-create dev
