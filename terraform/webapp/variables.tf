@@ -26,17 +26,20 @@ variable "location" {
 #
 variable "company" {
   type        = string
-  description = "OperaTerra"
+  description = "The name of the company"
+  default     = "OperaTerra"
 }
 
 variable "project" {
   type        = string
-  description = "P100"
+  description = "The project number"
+  default     = "P100"
 }
 
 variable "billing_code" {
   type        = string
-  description = "10001"
+  description = "The billing code"
+  default     = "10001"
 }
 
 #
