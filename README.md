@@ -50,7 +50,7 @@ cd terraform/backend
 terraform init
 terraform plan --out=main.tfplan
 terraform apply main.tfplan
-terraform output -raw backend_config > ../infrastructure/backend.tf
+terraform output -raw backend_config > ../webapp/backend.conf
 terraform output -raw storage_account_access_key
 ```
 
