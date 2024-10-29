@@ -31,6 +31,8 @@ jobs:
     - name: Terraform Init
       run: terraform init -backend-config=backend.conf
       working-directory: ${{env.WORKING_DIR}}
+      env:
+        TF_VAR_subscription_id: "${{env.ARM_SUBSCRIPTON_ID}}"
     
     - name: Terraform workspace stage
       run: terraform workspace select -or-create stage
@@ -61,6 +63,8 @@ jobs:
     - name: Terraform Init
       run: terraform init -backend-config=backend.conf
       working-directory: ${{env.WORKING_DIR}}
+      env:
+        TF_VAR_subscription_id: "${{env.ARM_SUBSCRIPTON_ID}}"
     
     - name: Terraform workspace prod
       run: terraform workspace select -or-create prod
