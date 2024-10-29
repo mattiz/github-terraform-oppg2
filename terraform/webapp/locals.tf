@@ -2,7 +2,7 @@ locals {
   workspaces_suffix = terraform.workspace == "default" ? "" : "${terraform.workspace}"
 
   basename = "${var.basename}-${local.workspaces_suffix}"
-  rgname   = "rg-${var.basename}"
+  rgname   = "rg-${local.basename}"
 
   common_tags = {
     company      = var.company
