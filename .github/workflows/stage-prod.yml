@@ -46,8 +46,8 @@ jobs:
         TF_VAR_database_user: "${{env.DATABASE_USER}}"
         TF_VAR_database_pass: "${{env.DATABASE_PASS}}"
 
-    #- name: Terraform Apply
-    #  run: terraform apply -auto-approve -input=false
+    - name: Terraform Apply
+      run: terraform apply -auto-approve -input=false
 
   prod:
     name: 'Prod'
@@ -78,5 +78,5 @@ jobs:
         TF_VAR_database_user: "${{env.DATABASE_USER}}"
         TF_VAR_database_pass: "${{env.DATABASE_PASS}}"
 
-    #- name: Terraform Apply
-    #  run: terraform apply -auto-approve -input=false
+    - name: Terraform Apply
+      run: terraform apply -auto-approve -input=false
