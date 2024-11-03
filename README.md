@@ -15,24 +15,41 @@ The repository has a workflow based on three types of branches. All development 
 
 Before getting started, make sure the Github repository is set up correctly as described in [Setup Github](#setup-github)
 
-Run the following commands to initialize the backend.
+Run the following commands from the `terraform/backend` folder to initialize the backend.
 
 ```shell
-cd terraform/backend
+cp terraform.tfvars.sample terraform.tfvars
+```
+
+Edit `terraform.tfvars` and change the properties as necessary.
+
+```shell
 terraform init
 terraform plan --out=main.tfplan
 terraform apply main.tfplan
-terraform output -raw backend_config > ../webapp/backend.conf
+terraform output -raw webapp_backend_config > ../webapp/backend.tf
+terraform output -raw backend_config > backend.tf
+terraform init
 ```
 
-### Infrastructure
+Make sure you commit the backend configuration. Navigate to the root of the repository and run the following commands:
+
 ```shell
+git add .
+git commit -m "Update backend config"
+```
+
+Now you can start making infrastructure changes by merging pull requests to the `develop` and `main` branches.
+
+It's also possible to provision resources from your local machine using the following commands:
+
+```shell
+terraform init
 terraform workspace new dev
 terraform workspace new staging
 terraform workspace new prod
 terraform workspace select dev
-
-terraform init -backend-config=backend.conf
+terraform plan --out=main.tfplan
 ```
 
 ## Setup Github
