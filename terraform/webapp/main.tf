@@ -5,13 +5,13 @@ resource "azurerm_resource_group" "rg" {
 }
 
 
-# module "network" {
-#   source      = "./modules/network"
-#   basename    = local.basename
-#   rgname      = azurerm_resource_group.rg.name
-#   location    = azurerm_resource_group.rg.location
-#   common_tags = local.common_tags
-# }
+module "network" {
+  source      = "./modules/network"
+  basename    = local.basename
+  rgname      = azurerm_resource_group.rg.name
+  location    = azurerm_resource_group.rg.location
+  common_tags = local.common_tags
+}
 
 # module "storageaccount" {
 #   source      = "./modules/storageaccount"
