@@ -32,7 +32,7 @@ jobs:
       uses: hashicorp/setup-terraform@v3
 
     - name: Terraform Init
-      run: terraform init -backend-config=backend.conf
+      run: terraform init
       working-directory: ${{env.WORKING_DIR}}
     
     - name: Terraform workspace stage
@@ -61,7 +61,7 @@ jobs:
       uses: hashicorp/setup-terraform@v3
 
     - name: Terraform Init
-      run: terraform init -backend-config=backend.conf
+      run: terraform init
       working-directory: ${{env.WORKING_DIR}}
     
     - name: Terraform workspace prod
