@@ -1,6 +1,6 @@
 resource "azurerm_resource_group" "rg" {
   name     = local.rgname
-  location = var.location
+  location = local.location
   tags     = local.common_tags
 }
 
@@ -17,13 +17,13 @@ module "network" {
   admin_source_address    = "81.166.22.83"
 }
 
-# module "storageaccount" {
-#   source      = "./modules/storageaccount"
-#   basename    = var.basename
-#   rgname      = azurerm_resource_group.rg.name
-#   location    = azurerm_resource_group.rg.location
-#   common_tags = local.common_tags
-# }
+module "storageaccount" {
+  source      = "./modules/storageaccount"
+  basename    = "otsa"
+  rgname      = azurerm_resource_group.rg.name
+  location    = azurerm_resource_group.rg.location
+  common_tags = local.common_tags
+}
 
 module "appservice" {
   source      = "./modules/appservice"
@@ -51,7 +51,7 @@ module "database" {
 
 module "loadbalancer" {
   source      = "./modules/loadbalancer"
-  basename    = var.basename
+  basename    = local.basename
   rgname      = azurerm_resource_group.rg.name
   location    = azurerm_resource_group.rg.location
   common_tags = local.common_tags
