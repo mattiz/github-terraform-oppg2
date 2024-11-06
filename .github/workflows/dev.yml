@@ -52,5 +52,5 @@ jobs:
       working-directory: ${{env.WORKING_DIR}}
 
     - name: Output web app url to PR summary
-      run: echo "DEV web app URL: https://$(terraform output -raw app_domain)" >> $GITHUB_STEP_SUMMARY
+      run: echo "DEV web app URL https://$(terraform output -raw app_domain)" >> $GITHUB_STEP_SUMMARY
       working-directory: ${{env.WORKING_DIR}}
