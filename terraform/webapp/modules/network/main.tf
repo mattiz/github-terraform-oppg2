@@ -12,7 +12,7 @@ resource "azurerm_network_security_group" "nsg" {
     protocol                   = "Tcp"
     source_port_range          = "*"
     destination_port_range     = "22"
-    source_address_prefix      = "81.166.22.83"
+    source_address_prefix      = var.admin_source_address
     destination_address_prefix = "*"
   }
 
@@ -24,7 +24,7 @@ resource "azurerm_network_security_group" "nsg" {
     protocol                   = "Icmp"
     source_port_range          = "*"
     destination_port_range     = "*"
-    source_address_prefix      = "81.166.22.83"
+    source_address_prefix      = var.admin_source_address
     destination_address_prefix = "*"
   }
 }
@@ -33,7 +33,7 @@ resource "azurerm_virtual_network" "vnet" {
   name                = local.vnetname
   location            = var.location
   resource_group_name = var.rgname
-  address_space       = ["10.0.0.0/16"]
+  address_space       = var.vnet_address_space
   tags                = var.common_tags
 }
 
@@ -41,7 +41,7 @@ resource "azurerm_subnet" "subnet" {
   name                 = local.subnetname
   resource_group_name  = var.rgname
   virtual_network_name = azurerm_virtual_network.vnet.name
-  address_prefixes     = ["10.0.1.0/24"]
+  address_prefixes     = var.subnet_address_prefixes
 }
 
 resource "azurerm_subnet_network_security_group_association" "snsga" {

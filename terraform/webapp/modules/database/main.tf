@@ -11,7 +11,6 @@ resource "azurerm_mssql_database" "mssqldb" {
   name      = local.mssqldbname
   server_id = azurerm_mssql_server.mssqlserver.id
 
-  # prevent the possibility of accidental data loss
   lifecycle {
     prevent_destroy = false
   }
