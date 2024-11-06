@@ -25,15 +25,17 @@ module "network" {
 #   common_tags = local.common_tags
 # }
 
-# module "serviceplan" {
-#   source      = "./modules/serviceplan"
-#   basename    = local.basename
-#   rgname      = azurerm_resource_group.rg.name
-#   location    = azurerm_resource_group.rg.location
-#   common_tags = local.common_tags
-#   os_type     = var.os_types.linux
-#   sku_name    = var.sku_names.linux_small
-# }
+module "appservice" {
+  source      = "./modules/appservice"
+  basename    = local.basename
+  rgname      = azurerm_resource_group.rg.name
+  location    = azurerm_resource_group.rg.location
+  common_tags = local.common_tags
+  subnet_id   = module.network.subnet_id
+  
+  os_type     = var.os_types.linux
+  sku_name    = var.sku_names.linux_small
+}
 
 # module "database" {
 #   source      = "./modules/database"

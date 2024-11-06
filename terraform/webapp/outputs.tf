@@ -13,3 +13,8 @@
 #   description = "The connection string of storage account"
 #   sensitive   = true
 # }
+
+output "app_domain" {
+  value       = module.appservice.app_domain
+  description = "The domain for the app server"
+}
