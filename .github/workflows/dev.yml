@@ -46,3 +46,11 @@ jobs:
     - name: Terraform Apply
       run: terraform apply -auto-approve -input=false
       working-directory: ${{env.WORKING_DIR}}
+
+    - name: Test dev web app
+      run: curl "https://$(terraform output -raw app_domain)"
+      working-directory: ${{env.WORKING_DIR}}
+
+    - name: Output web app url to PR summary
+      run: echo "DEV web app URL: https://$(terraform output -raw app_domain)" >> $GITHUB_STEP_SUMMARY
+      working-directory: ${{env.WORKING_DIR}}
