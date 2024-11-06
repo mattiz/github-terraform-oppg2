@@ -18,3 +18,8 @@ variable "basename" {
   type        = string
   description = "The basename of the resources"
 }
+
+variable "subnet_id" {
+  type        = string
+  description = "The ID of the network subnet"
+}

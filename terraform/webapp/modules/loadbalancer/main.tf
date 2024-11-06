@@ -17,3 +17,5 @@ resource "azurerm_lb" "lb" {
     public_ip_address_id = azurerm_public_ip.pip.id
   }
 }
+
+# TODO: connect to virtual network provided by var.subnet_id
