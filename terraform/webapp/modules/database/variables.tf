@@ -19,6 +19,11 @@ variable "basename" {
   description = "The basename of the resources"
 }
 
+variable "subnet_id" {
+  type        = string
+  description = "The ID of the network subnet"
+}
+
 variable "adminuser" {
   type        = string
   description = "The user name for the database"

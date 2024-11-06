@@ -5,6 +5,7 @@ resource "azurerm_mssql_server" "mssqlserver" {
   version                      = "12.0"
   administrator_login          = var.adminuser
   administrator_login_password = var.adminpass
+
 }
 
 resource "azurerm_mssql_database" "mssqldb" {
@@ -15,3 +16,5 @@ resource "azurerm_mssql_database" "mssqldb" {
     prevent_destroy = false
   }
 }
+
+# TODO: connect to virtual network provided by var.subnet_id

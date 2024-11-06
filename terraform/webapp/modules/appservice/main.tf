@@ -13,7 +13,8 @@ resource "azurerm_linux_web_app" "app" {
   location            = var.location
   service_plan_id     = azurerm_service_plan.sp.id
   tags                = var.common_tags
-  # virtual_network_subnet_id = var.subnet_id # FIXME: Connect web app to the virtual network
 
   site_config {}
 }
+
+# TODO: connect to virtual network provided by var.subnet_id
