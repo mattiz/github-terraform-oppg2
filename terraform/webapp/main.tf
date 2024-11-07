@@ -56,3 +56,4 @@ module "loadbalancer" {
   location    = azurerm_resource_group.rg.location
   common_tags = local.common_tags
   subnet_id   = module.network.subnet_id
+}
