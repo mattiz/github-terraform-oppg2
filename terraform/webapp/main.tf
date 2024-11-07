@@ -57,3 +57,4 @@ module "loadbalancer" {
   common_tags = local.common_tags
   subnet_id   = module.network.subnet_id
 }
+
