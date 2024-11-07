@@ -19,6 +19,11 @@ variable "basename" {
   description = "The basename of the resources"
 }
 
+variable "subnet_id" {
+  type        = string
+  description = "The ID of the network subnet"
+}
+
 variable "os_type" {
   type        = string
   description = "The OS type of the Service Plan"

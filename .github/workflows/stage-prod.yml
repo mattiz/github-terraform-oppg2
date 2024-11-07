@@ -23,6 +23,10 @@ jobs:
     name: 'Stage'
     runs-on: ubuntu-latest
     environment: staging
+    defaults:
+      run:
+        shell: bash
+        working-directory: "${{ env.WORKING_DIR }}"
 
     steps:
     - name: Checkout
@@ -33,25 +37,34 @@ jobs:
 
     - name: Terraform Init
       run: terraform init
-      working-directory: ${{env.WORKING_DIR}}
     
     - name: Terraform workspace stage
       run: terraform workspace select -or-create stage
-      working-directory: ${{env.WORKING_DIR}}
 
     - name: Terraform Plan
       run: terraform plan
-      working-directory: ${{env.WORKING_DIR}}
 
     - name: Terraform Apply
       run: terraform apply -auto-approve -input=false
-      working-directory: ${{env.WORKING_DIR}}
+    
+    - name: Test dev web app
+      run: curl "https://$(terraform output -raw app_domain)"
+
+    - name: Output web app URL to PR summary
+      run: |
+        app_domain=$(terraform output -raw app_domain)
+        echo "STAGE web app URL: https://$app_domain" >> $GITHUB_STEP_SUMMARY
+
 
   prod:
     name: 'Prod'
     needs: stage
     runs-on: ubuntu-latest
     environment: production
+    defaults:
+      run:
+        shell: bash
+        working-directory: "${{ env.WORKING_DIR }}"
 
     steps:
     - name: Checkout
@@ -62,16 +75,20 @@ jobs:
 
     - name: Terraform Init
       run: terraform init
-      working-directory: ${{env.WORKING_DIR}}
     
     - name: Terraform workspace prod
       run: terraform workspace select -or-create prod
-      working-directory: ${{env.WORKING_DIR}}
 
     - name: Terraform Plan
       run: terraform plan
-      working-directory: ${{env.WORKING_DIR}}
 
     - name: Terraform Apply
       run: terraform apply -auto-approve -input=false
-      working-directory: ${{env.WORKING_DIR}}
+
+    - name: Test dev web app
+      run: curl "https://$(terraform output -raw app_domain)"
+
+    - name: Output web app URL to PR summary
+      run: |
+        app_domain=$(terraform output -raw app_domain)
+        echo "PROD web app URL: https://$app_domain" >> $GITHUB_STEP_SUMMARY

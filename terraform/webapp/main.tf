@@ -1,6 +1,6 @@
 resource "azurerm_resource_group" "rg" {
   name     = local.rgname
-  location = var.location
+  location = local.location
   tags     = local.common_tags
 }
 
@@ -11,40 +11,49 @@ module "network" {
   rgname      = azurerm_resource_group.rg.name
   location    = azurerm_resource_group.rg.location
   common_tags = local.common_tags
+
+  vnet_address_space      = ["10.0.0.0/16"]
+  subnet_address_prefixes = ["10.0.1.0/24"]
+  admin_source_address    = "81.166.22.83"
 }
 
-# module "storageaccount" {
-#   source      = "./modules/storageaccount"
-#   basename    = var.basename
-#   rgname      = azurerm_resource_group.rg.name
-#   location    = azurerm_resource_group.rg.location
-#   common_tags = local.common_tags
-# }
+module "storageaccount" {
+  source      = "./modules/storageaccount"
+  basename    = "otsa"
+  rgname      = azurerm_resource_group.rg.name
+  location    = azurerm_resource_group.rg.location
+  common_tags = local.common_tags
+}
 
-# module "serviceplan" {
-#   source      = "./modules/serviceplan"
-#   basename    = local.basename
-#   rgname      = azurerm_resource_group.rg.name
-#   location    = azurerm_resource_group.rg.location
-#   common_tags = local.common_tags
-#   os_type     = var.os_types.linux
-#   sku_name    = var.sku_names.linux_small
-# }
+module "appservice" {
+  source      = "./modules/appservice"
+  basename    = local.basename
+  rgname      = azurerm_resource_group.rg.name
+  location    = azurerm_resource_group.rg.location
+  common_tags = local.common_tags
+  subnet_id   = module.network.subnet_id
 
-# module "database" {
-#   source      = "./modules/database"
-#   basename    = local.basename
-#   rgname      = azurerm_resource_group.rg.name
-#   location    = azurerm_resource_group.rg.location
-#   common_tags = local.common_tags
-#   adminuser   = var.database_user
-#   adminpass   = var.database_pass
-# }
+  os_type  = var.os_types.linux
+  sku_name = var.sku_names.linux_small
+}
 
-# module "loadbalancer" {
-#   source      = "./modules/loadbalancer"
-#   basename    = var.basename
-#   rgname      = azurerm_resource_group.rg.name
-#   location    = azurerm_resource_group.rg.location
-#   common_tags = local.common_tags
-# }
+module "database" {
+  source      = "./modules/database"
+  basename    = local.basename
+  rgname      = azurerm_resource_group.rg.name
+  location    = azurerm_resource_group.rg.location
+  common_tags = local.common_tags
+  subnet_id   = module.network.subnet_id
+
+  adminuser = var.database_user
+  adminpass = var.database_pass
+}
+
+module "loadbalancer" {
+  source      = "./modules/loadbalancer"
+  basename    = local.basename
+  rgname      = azurerm_resource_group.rg.name
+  location    = azurerm_resource_group.rg.location
+  common_tags = local.common_tags
+  subnet_id   = module.network.subnet_id
+}
