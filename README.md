@@ -13,7 +13,7 @@ The repository has a workflow based on three types of branches. All development 
 
 ## Getting started
 
-Before getting started, make sure the Github repository is set up correctly as described in [Setup Github](#setup-github)
+Before getting started, make sure the Github repository is set up correctly as described in [Setup Github](#setup-github) section.
 
 Run the following commands from the `terraform/backend` folder to initialize the backend.
 
@@ -50,13 +50,14 @@ terraform workspace new staging
 terraform workspace new prod
 terraform workspace select dev
 terraform plan --out=main.tfplan
+terraform apply main.tfplan
 ```
 
 ## Setup Github
 
 ### Branches
 
-Make sure the following branches is created
+Make sure the following branches is created:
 
 - main
 - develop
@@ -83,10 +84,12 @@ Create the following Github Actions secrets:
 
 | Name                      | Value                                                                                                              |
 |---------------------------|--------------------------------------------------------------------------------------------------------------------|
-| **AZURE_CLIENT_ID**       | Azure Portal ➔ Microsoft Entra ID ➔ App registrations<br>➔ Your app ➔ Overview ➔ Application (client) ID |
+| **AZURE_CLIENT_ID**       | Azure Portal ➔ Microsoft Entra ID ➔ App registrations<br>➔ Your app ➔ Overview ➔ Application (client) ID           |
 | **AZURE_CLIENT_SECRET**   | Secret from the app creation                                                                                       |
-| **AZURE_SUBSCRIPTION_ID** | Azure portal ➔ Subscriptions                                                                                     |
-| **AZURE_TENANT_ID**       | Azure Portal ➔ Microsoft Entra ID ➔ App registrations<br>➔ Your app ➔ Overview ➔ Directory (tenant) ID   |
+| **AZURE_SUBSCRIPTION_ID** | Azure portal ➔ Subscriptions                                                                                       |
+| **AZURE_TENANT_ID**       | Azure Portal ➔ Microsoft Entra ID ➔ App registrations<br>➔ Your app ➔ Overview ➔ Directory (tenant) ID             |
+| **DATABASE_USER**         | Administrator user for the web application database                                                                |
+| **DATABASE_PASS**         | Administrator password for the web application database                                                            |
 
 ### Environment
 
