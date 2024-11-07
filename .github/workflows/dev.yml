@@ -4,8 +4,8 @@ on:
   push:
     branches:
       - develop
-#    paths:
-#      - 'terraform/webapp/**'
+    paths:
+      - 'terraform/webapp/**'
   workflow_dispatch:
 
 env:
