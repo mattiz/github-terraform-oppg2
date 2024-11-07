@@ -37,8 +37,10 @@ terraform init
 Make sure you commit the backend configuration. Navigate to the root of the repository and run the following commands:
 
 ```shell
+git switch -c "new-backend"
 git add .
 git commit -m "Update backend config"
+git push
 ```
 
 Now you can start making infrastructure changes by merging pull requests to the `develop` and `main` branches.
