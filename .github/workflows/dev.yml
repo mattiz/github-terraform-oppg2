@@ -4,8 +4,8 @@ on:
   push:
     branches:
       - develop
-    paths:
-      - 'terraform/webapp/**'
+#    paths:
+#      - 'terraform/webapp/**'
   workflow_dispatch:
 
 env:
@@ -17,6 +17,11 @@ env:
   TF_VAR_database_user: ${{ secrets.DATABASE_USER }}
   TF_VAR_database_pass: ${{ secrets.DATABASE_PASS }}
   WORKING_DIR: ./terraform/webapp
+
+defaults:
+  run:
+    shell: bash
+    working-directory: ${{ env.WORKING_DIR }}
 
 jobs:
   stage:
@@ -51,6 +56,8 @@ jobs:
       run: curl "https://$(terraform output -raw app_domain)"
       working-directory: ${{env.WORKING_DIR}}
 
-    - name: Output web app url to PR summary
-      run: echo "DEV web app URL https://$(terraform output -raw app_domain)" >> $GITHUB_STEP_SUMMARY
-      working-directory: ${{env.WORKING_DIR}}
+    - name: Output web app URL to PR summary
+      run: |
+        app_domain=$(terraform output -raw app_domain)
+        echo "DEV web app URL: https://$app_domain" >> $GITHUB_STEP_SUMMARY
+      working-directory: ${{ env.WORKING_DIR }}
