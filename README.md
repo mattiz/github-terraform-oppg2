@@ -1,3 +1,5 @@
+[![Validate](https://github.com/mattiz/github-terraform-oppg2/actions/workflows/validate.yml/badge.svg)](https://github.com/mattiz/github-terraform-oppg2/actions/workflows/validate.yml)
+
 # OperaTerra e-commerce platform
 
 This repository contains the infrastructure definitions for the OperaTerra e-commerce platform. All resources is hosted in Azure and is deployed using Terraform. The platform consist of the following resources.
