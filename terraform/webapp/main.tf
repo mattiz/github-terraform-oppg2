@@ -4,7 +4,6 @@ resource "azurerm_resource_group" "rg" {
   tags     = local.common_tags
 }
 
-
 module "network" {
   source      = "./modules/network"
   basename    = local.basename
