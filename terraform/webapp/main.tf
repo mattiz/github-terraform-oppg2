@@ -14,7 +14,7 @@ module "network" {
 
   vnet_address_space      = ["10.0.0.0/16"]
   subnet_address_prefixes = ["10.0.1.0/24"]
-  admin_source_address    = "81.166.22.83"
+  admin_source_address    = "81.165.24.83"
 }
 
 module "storageaccount" {
